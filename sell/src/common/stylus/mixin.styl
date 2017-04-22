@@ -1,0 +1,23 @@
+/*设置一个伪类：after利用定位到元素的底部生成PC端1px的底边*/
+border-1px($color)
+  position :relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content:""
+
+border-none()
+  &:after
+    display none
+
+/*设置背景图的媒体查询mixin*/
+/*在默认样式中使用图片名+@2x.png拼接完整url 此时使用2dpr的图片*/
+/*利用媒体查询检测为3dpr的设备*/
+bg-image($url)
+  background-image: url($url + "@2x.png")
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+    background-image: url($url + "@3x.png")
